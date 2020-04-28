@@ -16,7 +16,7 @@ OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 # Flags
 CPPFLAGS := -Iinclude # Preprocessor flags not C++
-CXXFLAGS := -g -O0 -Wall -march=x86-64 -mtune=generic -Wshadow -Wredundant-decls -Wsign-compare $(INCLUDE_DIR)
+CXXFLAGS := -g -O0 -Wall -march=x86-64 -std=c++11 -mtune=generic -Wshadow -Wredundant-decls -Wsign-compare $(INCLUDE_DIR)
 LDFLAGS := -Llib
 LDLIBS := -lm -lstdc++
 
