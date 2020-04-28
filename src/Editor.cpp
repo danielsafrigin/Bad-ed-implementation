@@ -8,7 +8,7 @@ void Editor::loop(void)
 	std::string input_s;
 	
 	// Read input file
-	while (getline(std::cin, input_s)) {
+	while (std::getline(std::cin, input_s)) {
 		std::cin >> std::noskipws , input_s;
 		document->input(input_s);
 	}
