@@ -23,7 +23,7 @@
 * @param line_vector Documents vector of lines.
 * @param line_pointer Current line.
 */
-static void do_operator_n(std::string operator_s, const std::vector <std::string>& line_vector, int* line_pointer)
+static void do_operator_n(const std::string& operator_s, const std::vector <std::string>& line_vector, int* line_pointer)
 {
 	std::string num_s = operator_s.substr(0, operator_s.length() - 1);
 	int num = std::stoi(num_s);
@@ -50,7 +50,7 @@ static void do_operator_p(const std::vector <std::string>& line_vector, int *lin
 * @param line_vector Documents vector of lines.
 * @param line_pointer Current line.
 */
-static void do_operator_d(std::string operator_s, std::vector <std::string> &line_vector, int* line_pointer)
+static void do_operator_d(const std::string& operator_s, std::vector <std::string> &line_vector, int* line_pointer)
 {
 	if (line_vector.empty()) return;
 
@@ -66,7 +66,7 @@ static void do_operator_d(std::string operator_s, std::vector <std::string> &lin
 * @param line_vector Documents vector of lines.
 * @param line_pointer Current line.
 */
-static void do_operator_next_text(std::string operator_s, const std::vector <std::string>& line_vector, int* line_pointer)
+static void do_operator_next_text(const std::string& operator_s, const std::vector <std::string>& line_vector, int* line_pointer)
 {
 	int temp_counter = *line_pointer;
 	std::string temp_s = operator_s.substr(1, operator_s.length() - 1);
@@ -89,7 +89,7 @@ static void do_operator_next_text(std::string operator_s, const std::vector <std
 * @param line_vector Documents vector of lines.
 * @param line_pointer Current line.
 */
-static void do_operator_back_text(std::string operator_s, const std::vector <std::string>& line_vector, int* line_pointer)
+static void do_operator_back_text(const std::string& operator_s, const std::vector <std::string>& line_vector, int* line_pointer)
 {
 	int temp_counter = *line_pointer;
 	std::string temp_s = operator_s.substr(1, operator_s.length() - 1);
@@ -136,7 +136,7 @@ static std::vector<std::string> split_s_to_vector(const std::string& str, const 
 * @param line_vector Documents vector of lines.
 * @param line_pointer Current line.
 */
-static void do_operator_swap(std::string operator_s, std::vector <std::string> &line_vector, int* line_pointer)
+static void do_operator_swap(const std::string& operator_s, std::vector <std::string> &line_vector, int* line_pointer)
 {
 	std::vector<std::string> temp_vec = split_s_to_vector(operator_s, '/');
 	std::string to_find_s = temp_vec.at(1);
@@ -152,7 +152,7 @@ static void do_operator_swap(std::string operator_s, std::vector <std::string> &
 * @param line_vector Documents vector of lines.
 * @param line_pointer Current line.
 */
-static void do_operator_j(std::string operator_s, std::vector <std::string> &line_vector, int* line_pointer)
+static void do_operator_j(const std::string& operator_s, std::vector <std::string> &line_vector, int* line_pointer)
 {
 	std::vector<std::string> temp_vec1 = split_s_to_vector(operator_s, ',');
 	std::vector<std::string> temp_vec2 = split_s_to_vector(temp_vec1.at(1), 'j');
@@ -208,7 +208,7 @@ static int get_operator(std::string operator_s)
 * Add new line acording to our operator state.
 * @param line Input line to be processed.
 */
-void Document::add_line(std::string line)
+void Document::add_line(const std::string& line)
 {
 
 	switch (state) {
@@ -277,7 +277,7 @@ void Document::add_line(std::string line)
 * Execute operators or change operator states.
 * @param operator_s Raw input.
 */
-void Document::operator_handler(std::string operator_s)
+void Document::operator_handler(const std::string& operator_s)
 {
 	int operator_temp = get_operator(operator_s);
 
@@ -337,7 +337,7 @@ void Document::operator_handler(std::string operator_s)
 * Pass input to be processed as a new operator or a new line.
 * @param operator_s Raw input.
 */
-void Document::input(std::string input) {
+void Document::input(const std::string& input) {
 	if (state == NOT_IN_OPERATOR) {
 
 		operator_handler(input);

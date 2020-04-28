@@ -15,9 +15,9 @@ public:
 	// Line counting starts from 1
 	Document(void) : line_pointer(0), line_vector(), state(-1) {};
 	~Document(void) {};
-	void operator_handler(std::string);
-	void add_line(std::string);
-	void input(std::string);
+	void operator_handler(const std::string&);
+	void add_line(const std::string&);
+	void input(const std::string&);
 };
 
 #endif
