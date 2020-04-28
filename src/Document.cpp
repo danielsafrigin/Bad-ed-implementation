@@ -110,6 +110,7 @@ static void do_operator_back_text(const std::string& operator_s, const std::vect
 * Split string to vector of strings by char delimiter.
 * @param str String to be split.
 * @param ch Char delimiter.
+* @return vector of strings of input string split by delimiter
 */
 static std::vector<std::string> split_s_to_vector(const std::string& str, const char& ch) {
 	std::string next;
@@ -173,8 +174,9 @@ static void do_operator_Q(void)
 }
 
 /*
-* Return the operator found in input.
+* Search for the right operator in input.
 * @param operator_s Raw input.
+* @return operator found in input.
 */
 static int get_operator(std::string operator_s)
 {
