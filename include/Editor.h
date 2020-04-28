@@ -11,7 +11,7 @@ public:
 		document = new Document();
 	};
 	~Editor(void) {
-		//delete document;
+		delete document;
 	};
 
 };
